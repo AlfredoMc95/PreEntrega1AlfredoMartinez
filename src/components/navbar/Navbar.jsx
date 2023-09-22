@@ -3,10 +3,21 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import CartWidgete from "../cartWidgete/CartWidgete";
 import MenuButtons from "../MenuButtons/MenuButtons";
+import CartWidgete from "../cartWidgete/CartWidgete";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [count, setCount] = useState(0);
+
+  const add = () => {
+    setCount(count + 1);
+  };
+
+  const remove = () => {
+    setCount(count - 1);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -17,7 +28,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1 }}>
             <MenuButtons />
           </Box>
-          <CartWidgete />
+          <CartWidgete countCart={count} />
         </Toolbar>
       </AppBar>
     </Box>

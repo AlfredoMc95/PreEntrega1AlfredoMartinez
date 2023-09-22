@@ -3,13 +3,13 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 
 //CartWidgete
 
-const CartWidgete = () => {
+const CartWidgete = ({ countCart }) => {
   return (
-    <div>
-      <Badge badgeContent={1} color="error">
+    <>
+      <Badge badgeContent={countCart} color="error">
         <LocalGroceryStoreIcon />
       </Badge>
-    </div>
+    </>
   );
 };
 
