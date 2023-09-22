@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import MenuButtons from "../MenuButtons/MenuButtons";
 import CartWidgete from "../cartWidgete/CartWidgete";
+import Button from "@mui/material/Button";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -15,7 +16,7 @@ const Navbar = () => {
   };
 
   const remove = () => {
-    setCount(count - 1);
+    count >= 1 ? setCount(count - 1) : setCount((count = 0));
   };
 
   return (
@@ -27,6 +28,12 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1 }}>
             <MenuButtons />
+            <Button onClick={add} variant="contained">
+              add
+            </Button>
+            <Button onClick={remove} variant="contained">
+              remove
+            </Button>
           </Box>
           <CartWidgete countCart={count} />
         </Toolbar>
