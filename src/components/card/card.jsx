@@ -7,16 +7,13 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const card = ({ color, greeeting, setCount, countCart }) => {
+const card = ({ color, greeeting, setCount, countCart, addToCart }) => {
   const [product, setProduct] = useState(0);
   const add = () => {
     setProduct(product + 1);
   };
   const remove = () => {
     product >= 1 ? setProduct(product - 1) : setProduct((product = 0));
-  };
-  const addToCart = () => {
-    setCount((countCart = product));
   };
   const deleteItems = () => {
     setCount(0);
@@ -52,7 +49,7 @@ const card = ({ color, greeeting, setCount, countCart }) => {
           </Button>
           <Button
             sx={{ mx: 2 }}
-            onClick={addToCart}
+            onClick={() => addToCart(product)}
             variant="contained"
             color="info"
           >

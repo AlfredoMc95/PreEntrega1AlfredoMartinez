@@ -5,15 +5,31 @@ import { linkProducts } from "../url/urls";
 
 const itemListContainer = ({ setCount, countCart }) => {
   const [mesage, setMesage] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
   const fetchData = () => {
     fetch(linkProducts)
       .then((datos) => datos.json())
       .then((respuesta) => setMesage(respuesta));
   };
 
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const totalItems = cartItems.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+
+    setCount(totalItems);
+    console.log(cartItems);
+  }, [cartItems, setCount]);
 
   return (
     <Container sx={{ py: 10 }}>
@@ -25,6 +41,7 @@ const itemListContainer = ({ setCount, countCart }) => {
               color={mesages.color}
               setCount={setCount}
               countCart={countCart}
+              addToCart={addToCart}
             />
           </div>
         );
