@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const card = ({ color, greeeting, setCount, countCart }) => {
   const [product, setProduct] = useState(0);
@@ -16,6 +17,10 @@ const card = ({ color, greeeting, setCount, countCart }) => {
   };
   const addToCart = () => {
     setCount((countCart = product));
+  };
+  const deleteItems = () => {
+    setCount(0);
+    setProduct(0);
   };
   return (
     <Card
@@ -52,6 +57,9 @@ const card = ({ color, greeeting, setCount, countCart }) => {
             color="info"
           >
             add
+          </Button>
+          <Button onClick={deleteItems} variant="contained" color="info">
+            <DeleteIcon />
           </Button>
         </Box>
       </CardContent>
