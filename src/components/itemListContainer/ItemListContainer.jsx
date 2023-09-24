@@ -19,12 +19,14 @@ const itemListContainer = ({ setCount, countCart }) => {
     <Container sx={{ py: 10 }}>
       {mesage.map((mesages) => {
         return (
-          <Card
-            greeeting={mesages.text}
-            color={mesages.color}
-            setCount={setCount}
-            countCart={countCart}
-          />
+          <div key={mesages.id}>
+            <Card
+              greeeting={mesages.text}
+              color={mesages.color}
+              setCount={setCount}
+              countCart={countCart}
+            />
+          </div>
         );
       })}
     </Container>
