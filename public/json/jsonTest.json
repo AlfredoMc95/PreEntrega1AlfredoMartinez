@@ -1,10 +1,10 @@
 [
-    {"text":"Hola","color":"#a6454e","id":0},
-    {"text":"esta es mi primera Preentrega","color":"#45a0a6","id":1},
-    {"text":"aun no estoy seguro","color":"#8ea645","id":2},
-    {"text":"que tipo de tienda hacer","color":"#459da6","id":3},
-    {"text":"depronto libros o","color":"#8c45a6","id":4},
-    {"text":"usar la API de pokemon para verder estos.","color":"#a6457d","id":5},
-    {"text":"Saludos, solo quiero testear que el navbar","color":"#c67db3","id":6},
-    {"text":"sea sticky y los colores.","color":"#7dc6b9","id":7}
+    {"text":"Hola","color":"#a6454e","stock":10,"id":0},
+    {"text":"esta es mi primera Preentrega","color":"#45a0a6","stock":15,"id":1},
+    {"text":"aun no estoy seguro","color":"#8ea645","stock":8,"id":2},
+    {"text":"que tipo de tienda hacer","color":"#459da6","stock":5,"id":3},
+    {"text":"depronto libros o","color":"#8c45a6","stock":4,"id":4},
+    {"text":"usar la API de pokemon para verder estos.","color":"#a6457d","stock":21,"id":5},
+    {"text":"Saludos, solo quiero testear que el navbar","color":"#c67db3","stock":16,"id":6},
+    {"text":"sea sticky y los colores.","color":"#7dc6b9","stock":8,"id":7}
 ]

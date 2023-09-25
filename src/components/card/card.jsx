@@ -7,13 +7,21 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const card = ({ color, greeeting, setCount, countCart, addToCart }) => {
+const card = ({ color, greeeting, setCount, stock, countCart, addToCart }) => {
   const [product, setProduct] = useState(0);
+  const [productStcok] = useState(stock);
+  const [stockReach, setStockReach] = useState(false);
+
   const add = () => {
-    setProduct(product + 1);
+    product >= productStcok ? setStockReach(true) : setProduct(product + 1);
   };
   const remove = () => {
-    product >= 1 ? setProduct(product - 1) : setProduct((product = 0));
+    if (product >= 1) {
+      setProduct(product - 1);
+      setStockReach(false);
+    } else {
+      setProduct((product = 0));
+    }
   };
   const deleteItems = () => {
     setCount(0);
@@ -44,7 +52,7 @@ const card = ({ color, greeeting, setCount, countCart, addToCart }) => {
             -
           </Button>
           <Paper sx={{ px: 4, py: 1 }}>{product}</Paper>
-          <Button onClick={add} variant="contained">
+          <Button onClick={add} variant="contained" disabled={stockReach}>
             +
           </Button>
           <Button
@@ -58,6 +66,7 @@ const card = ({ color, greeeting, setCount, countCart, addToCart }) => {
           <Button onClick={deleteItems} variant="contained" color="info">
             <DeleteIcon />
           </Button>
+          <Paper sx={{ mx: 5, px: 4, py: 1 }}>stock: {productStcok}</Paper>
         </Box>
       </CardContent>
     </Card>

@@ -40,6 +40,7 @@ const itemListContainer = ({ setCount, countCart }) => {
               greeeting={mesages.text}
               color={mesages.color}
               setCount={setCount}
+              stock={mesages.stock}
               countCart={countCart}
               addToCart={addToCart}
             />
