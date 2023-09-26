@@ -6,6 +6,7 @@ import { linkProducts } from "../url/urls";
 const itemListContainer = ({ setCount, countCart }) => {
   const [mesage, setMesage] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [indexCard, setIndexCard] = useState(0);
 
   const fetchData = () => {
     fetch(linkProducts)
@@ -31,24 +32,35 @@ const itemListContainer = ({ setCount, countCart }) => {
     console.log(cartItems);
   }, [cartItems, setCount]);
 
-  return (
-    <Container sx={{ py: 10 }}>
-      {mesage.map((mesages) => {
-        return (
-          <div key={mesages.id}>
-            <Card
-              greeeting={mesages.text}
-              color={mesages.color}
-              setCount={setCount}
-              stock={mesages.stock}
-              countCart={countCart}
-              addToCart={addToCart}
-            />
-          </div>
-        );
-      })}
-    </Container>
-  );
+  useEffect(() => {
+    let counter = indexCard;
+    const interval = setInterval(() => {
+      if (counter >= mesage.length) {
+        clearInterval(interval);
+      } else {
+        setIndexCard((indexCard) => indexCard + 1);
+        counter++;
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [mesage]);
+
+  let cardDraftList = mesage.slice(0, indexCard).map((mesages, index) => {
+    return (
+      <div key={index}>
+        <Card
+          greeeting={mesages.text}
+          color={mesages.color}
+          stock={mesages.stock}
+          setCount={setCount}
+          countCart={countCart}
+          addToCart={addToCart}
+        />
+      </div>
+    );
+  });
+
+  return <Container sx={{ py: 10 }}>{cardDraftList}</Container>;
 };
 
 export default itemListContainer;
