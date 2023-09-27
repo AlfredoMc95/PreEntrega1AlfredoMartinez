@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { linkProducts } from "../url/urls";
 
 const itemListContainer = ({ setCount, countCart }) => {
-  const [mesage, setMesage] = useState([]);
+  const [product, setProduct] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [indexCard, setIndexCard] = useState(0);
 
   const fetchData = () => {
     fetch(linkProducts)
       .then((datos) => datos.json())
-      .then((respuesta) => setMesage(respuesta));
+      .then((respuesta) => setProduct(respuesta));
   };
 
   const addToCart = (item) => {
@@ -35,7 +35,7 @@ const itemListContainer = ({ setCount, countCart }) => {
   useEffect(() => {
     let counter = indexCard;
     const interval = setInterval(() => {
-      if (counter >= mesage.length) {
+      if (counter >= product.length) {
         clearInterval(interval);
       } else {
         setIndexCard((indexCard) => indexCard + 1);
@@ -43,15 +43,16 @@ const itemListContainer = ({ setCount, countCart }) => {
       }
     }, 2000);
     return () => clearInterval(interval);
-  }, [mesage]);
+  }, [product]);
 
-  let cardDraftList = mesage.slice(0, indexCard).map((mesages, index) => {
+  let cardDraftList = product.slice(0, indexCard).map((products, index) => {
     return (
       <div key={index}>
         <Card
-          greeeting={mesages.text}
-          color={mesages.color}
-          stock={mesages.stock}
+          image={products.image}
+          greeeting={products.text}
+          color={products.color}
+          stock={products.rating.count}
           setCount={setCount}
           countCart={countCart}
           addToCart={addToCart}

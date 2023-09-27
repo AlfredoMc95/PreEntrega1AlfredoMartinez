@@ -1,1 +1,1 @@
-export const linkProducts = "/json/jsonTest.json";
+export const linkProducts = "https://fakestoreapi.com/products";
