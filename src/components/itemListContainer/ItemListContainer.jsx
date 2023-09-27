@@ -2,6 +2,7 @@ import Container from "@mui/material/Container";
 import Card from "../card/card";
 import { useEffect, useState } from "react";
 import { linkProducts } from "../url/urls";
+import Grid from "@mui/material/Unstable_Grid2";
 
 const itemListContainer = ({ setCount, countCart }) => {
   const [product, setProduct] = useState([]);
@@ -29,7 +30,6 @@ const itemListContainer = ({ setCount, countCart }) => {
     );
 
     setCount(totalItems);
-    console.log(cartItems);
   }, [cartItems, setCount]);
 
   useEffect(() => {
@@ -47,21 +47,27 @@ const itemListContainer = ({ setCount, countCart }) => {
 
   let cardDraftList = product.slice(0, indexCard).map((products, index) => {
     return (
-      <div key={index}>
+      <Grid xs={4} key={index}>
         <Card
+          greeeting={products.title}
           image={products.image}
-          greeeting={products.text}
           color={products.color}
           stock={products.rating.count}
           setCount={setCount}
           countCart={countCart}
           addToCart={addToCart}
         />
-      </div>
+      </Grid>
     );
   });
 
-  return <Container sx={{ py: 10 }}>{cardDraftList}</Container>;
+  return (
+    <Container sx={{ py: 10 }}>
+      <Grid container spacing={2}>
+        {cardDraftList}
+      </Grid>
+    </Container>
+  );
 };
 
 export default itemListContainer;

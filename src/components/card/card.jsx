@@ -39,7 +39,6 @@ const card = ({
   return (
     <Card
       sx={{
-        maxWidth: 400,
         px: 4,
         py: 2,
         justifyContent: "center",
@@ -54,7 +53,7 @@ const card = ({
         title="green iguana"
       />
       <CardContent>
-        <Typography variant="h3" align="center">
+        <Typography variant="subtitle1" align="center">
           {greeeting} asdasdasdas
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
