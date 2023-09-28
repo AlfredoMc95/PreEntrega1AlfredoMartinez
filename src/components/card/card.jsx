@@ -11,9 +11,11 @@ import { CardMedia } from "@mui/material";
 const card = ({
   image,
   color,
+  price,
   greeeting,
   setCount,
   stock,
+  rating,
   countCart,
   addToCart,
 }) => {
@@ -48,18 +50,31 @@ const card = ({
     >
       <CardMedia
         component={"img"}
-        sx={{ height: 400, objectFit: "contain" }}
+        sx={{ height: 400, objectFit: "contain", background: "#FFFFFF" }}
         image={image}
-        title="green iguana"
+        title={greeeting}
       />
-      <CardContent>
-        <Typography variant="subtitle1" align="center">
-          {greeeting} asdasdasdas
-        </Typography>
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "space-around",
+        }}
+      >
+        <Box
+          sx={{
+            textAlign: "center",
+          }}
+        >
+          <Typography variant="subtitle1" sx={{ height: 120 }}>
+            {greeeting}
+          </Typography>
+        </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <Box sx={{ display: "flex" }}>
-            <Paper sx={{ mx: 5, px: 4, py: 1 }}>price {productStcok}$</Paper>
-            <Paper sx={{ mx: 5, px: 4, py: 1 }}>stock {productStcok}</Paper>
+          <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+            <Paper sx={{ p: 1 }}>Price {price}$</Paper>
+            <Paper sx={{ p: 1 }}>Stock {productStcok}</Paper>
+            <Paper sx={{ p: 1 }}>{rating}</Paper>
           </Box>
           <Box
             sx={{
@@ -76,7 +91,7 @@ const card = ({
               +
             </Button>
             <Button
-              sx={{ mx: 2 }}
+              sx={{ mx: 1 }}
               onClick={() => addToCart(product)}
               variant="contained"
               color="info"

@@ -52,7 +52,9 @@ const itemListContainer = ({ setCount, countCart }) => {
           greeeting={products.title}
           image={products.image}
           color={products.color}
+          price={products.price}
           stock={products.rating.count}
+          rating={products.rating.rate}
           setCount={setCount}
           countCart={countCart}
           addToCart={addToCart}
