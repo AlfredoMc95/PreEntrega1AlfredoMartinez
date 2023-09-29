@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -8,18 +8,16 @@ import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { CardMedia } from "@mui/material";
 
-const card = ({
+const MyCard = ({
   image,
-  color,
   price,
   greeeting,
   setCount,
   stock,
   rating,
-  countCart,
   addToCart,
 }) => {
-  const [product, setProduct] = useState(0);
+  let [product, setProduct] = useState(0);
   const [productStcok] = useState(stock);
   const [stockReach, setStockReach] = useState(false);
 
@@ -108,4 +106,4 @@ const card = ({
   );
 };
 
-export default card;
+export default MyCard;
