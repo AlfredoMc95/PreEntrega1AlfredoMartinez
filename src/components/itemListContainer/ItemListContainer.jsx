@@ -47,7 +47,7 @@ const itemListContainer = ({ setCount, countCart }) => {
 
   let cardDraftList = product.slice(0, indexCard).map((products, index) => {
     return (
-      <Grid xs={4} key={index}>
+      <Grid xs={12} sm={4} key={index}>
         <Card
           greeeting={products.title}
           image={products.image}
