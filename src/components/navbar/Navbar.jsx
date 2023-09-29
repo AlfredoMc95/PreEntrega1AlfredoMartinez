@@ -1,26 +1,70 @@
-//navbar
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import MenuButtons from "../MenuButtons/MenuButtons";
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import NabListDrawer from "./NabListDrawer";
+import { useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 import CartWidgete from "../cartWidgete/CartWidgete";
 
-const Navbar = ({ countCart }) => {
+const navLinks = [
+  { title: "Home", path: "#" },
+  { title: "Home 1", path: "#" },
+  { title: "Home 2", path: "#" },
+];
+
+const Navbar = ({ title = "Titulo", countCart }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Alfredo's Store
+          <IconButton
+            color="inherit"
+            fontSize="large"
+            onClick={() => setOpen(true)}
+            sx={{ display: { xs: "flex", sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h1"
+            fontSize="large"
+            align="left"
+            sx={{ flexGrow: 1, fontWeight: "bold" }}
+          >
+            {title}
           </Typography>
-          <Box sx={{ flexGrow: 1 }}>
-            <MenuButtons />
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            {navLinks.map((buttons) => (
+              <Button
+                color="inherit"
+                key={buttons.title}
+                components="a"
+                href={buttons.path}
+              >
+                {buttons.title}
+              </Button>
+            ))}
           </Box>
           <CartWidgete countCart={countCart} />
         </Toolbar>
       </AppBar>
-    </Box>
+      <Drawer
+        open={open}
+        anchor="left"
+        onClose={() => setOpen(false)}
+        sx={{ display: { xs: "flex", sm: "none" } }}
+      >
+        <NabListDrawer navLinks={navLinks} />
+      </Drawer>
+    </>
   );
 };
 

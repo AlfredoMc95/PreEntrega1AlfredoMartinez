@@ -7,7 +7,7 @@ function App() {
   let [count, setCount] = useState(0);
   return (
     <>
-      <Navbar countCart={count} />
+      <Navbar title={"Alfredo's Store"} countCart={count} />
       <ItemListContainer setCount={setCount} countCart={count} />
     </>
   );
