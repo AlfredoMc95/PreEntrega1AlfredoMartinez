@@ -4,6 +4,7 @@ import Card from "../components/card/card";
 import Grid from "@mui/material/Unstable_Grid2";
 import { linkProducts } from "../components/url/urls";
 import UseFetch from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const ItemListContainer = ({ setCount, countCart }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -37,19 +38,21 @@ const ItemListContainer = ({ setCount, countCart }) => {
     return () => clearInterval(interval);
   }, [data]);
 
-  let cardDraftList = data?.slice(0, indexCard).map((products, index) => {
+  let cardDraftList = data?.slice(0, indexCard).map((products) => {
     return (
-      <Grid xs={12} sm={4} key={index}>
-        <Card
-          greeeting={products.title}
-          image={products.image}
-          price={products.price}
-          stock={products.rating.count}
-          rating={products.rating.rate}
-          setCount={setCount}
-          countCart={countCart}
-          addToCart={addToCart}
-        />
+      <Grid xs={12} sm={4} key={products.id}>
+        <Link to={`/ItemDetailPage/${products.id}`}>
+          <Card
+            greeeting={products.title}
+            image={products.image}
+            price={products.price}
+            stock={products.rating.count}
+            rating={products.rating.rate}
+            setCount={setCount}
+            countCart={countCart}
+            addToCart={addToCart}
+          />
+        </Link>
       </Grid>
     );
   });

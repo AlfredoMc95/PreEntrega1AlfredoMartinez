@@ -4,7 +4,8 @@ import { useState } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import ItemPage from "./pages/ItemPage";
+import CategoriPage from "./pages/CategoriPage";
+import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
 
 const navLinksArray = [
@@ -31,7 +32,11 @@ function App() {
               <ItemListContainerPage setCount={setCount} countCart={count} />
             }
           ></Route>
-          <Route path="/Product" element={<ItemPage />}></Route>
+          <Route path="/CategoriPage" element={<CategoriPage />}></Route>
+          <Route
+            path="/ItemDetailPage/:id"
+            element={<ItemDetailPage />}
+          ></Route>
         </Routes>
       </Router>
     </>

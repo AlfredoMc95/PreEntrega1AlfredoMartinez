@@ -17,7 +17,7 @@ const MyCard = ({
   rating,
   addToCart,
 }) => {
-  let [product, setProduct] = useState(0);
+  /*   let [product, setProduct] = useState(0);
   const [productStcok] = useState(stock);
   const [stockReach, setStockReach] = useState(false);
 
@@ -35,7 +35,7 @@ const MyCard = ({
   const deleteItems = () => {
     setCount(0);
     setProduct(0);
-  };
+  }; */
   return (
     <Card
       sx={{
@@ -68,7 +68,12 @@ const MyCard = ({
             {greeeting}
           </Typography>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ textAlign: "center" }}>
+          <Button variant="contained" size="large">
+            Buy
+          </Button>
+        </Box>
+        {/*         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
             <Paper sx={{ p: 1 }}>Price {price}$</Paper>
             <Paper sx={{ p: 1 }}>Stock {productStcok}</Paper>
@@ -100,7 +105,7 @@ const MyCard = ({
               <DeleteIcon />
             </Button>
           </Box>
-        </Box>
+        </Box> */}
       </CardContent>
     </Card>
   );
