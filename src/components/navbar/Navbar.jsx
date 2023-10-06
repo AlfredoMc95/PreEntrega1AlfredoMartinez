@@ -11,14 +11,9 @@ import NabListDrawer from "./NabListDrawer";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CartWidgete from "../cartWidgete/CartWidgete";
+import { NavLink } from "react-router-dom";
 
-const navLinks = [
-  { title: "Home", path: "#" },
-  { title: "Home 1", path: "#" },
-  { title: "Home 2", path: "#" },
-];
-
-const Navbar = ({ title = "Titulo", countCart }) => {
+const Navbar = ({ title = "Titulo", countCart, navLinksArray }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -37,17 +32,25 @@ const Navbar = ({ title = "Titulo", countCart }) => {
             variant="h1"
             fontSize="large"
             align="left"
-            sx={{ flexGrow: 1, fontWeight: "bold" }}
+            component={NavLink}
+            to={navLinksArray[0].path}
+            underline="none"
+            sx={{
+              flexGrow: 1,
+              fontWeight: "bold",
+              textDecoration: "none",
+              color: "white",
+            }}
           >
             {title}
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navLinks.map((buttons) => (
+            {navLinksArray.map((buttons) => (
               <Button
                 color="inherit"
                 key={buttons.title}
-                components="a"
-                href={buttons.path}
+                component={NavLink}
+                to={buttons.path}
               >
                 {buttons.title}
               </Button>
@@ -62,7 +65,7 @@ const Navbar = ({ title = "Titulo", countCart }) => {
         onClose={() => setOpen(false)}
         sx={{ display: { xs: "flex", sm: "none" } }}
       >
-        <NabListDrawer navLinks={navLinks} />
+        <NabListDrawer navLinksArray={navLinksArray} />
       </Drawer>
     </>
   );

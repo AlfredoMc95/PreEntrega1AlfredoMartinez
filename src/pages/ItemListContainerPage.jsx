@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
-import Card from "../card/card";
+import Card from "../components/card/card";
 import Grid from "@mui/material/Unstable_Grid2";
-import { linkProducts } from "../url/urls";
-import UseFetch from "../../hooks/useFetch";
+import { linkProducts } from "../components/url/urls";
+import UseFetch from "../hooks/useFetch";
 
 const ItemListContainer = ({ setCount, countCart }) => {
   const [cartItems, setCartItems] = useState([]);

@@ -1,11 +1,11 @@
 import { Box, ListItem, ListItemButton, ListItemText } from "@mui/material";
 
-const NabListDrawer = ({ navLinks }) => {
+const NabListDrawer = ({ navLinksArray }) => {
   return (
     <Box sx={{ width: 250 }}>
       <nav>
-        {navLinks.map((buttons) => (
-          <ListItem>
+        {navLinksArray.map((buttons) => (
+          <ListItem key={navLinksArray.title}>
             <ListItemButton
               key={buttons.title}
               components="a"

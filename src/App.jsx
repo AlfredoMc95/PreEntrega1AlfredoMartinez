@@ -1,14 +1,39 @@
 import "./App.css";
-import ItemListContainer from "./components/itemListContainer/itemListContainer";
 import Navbar from "./components/navbar/Navbar";
 import { useState } from "react";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import ItemPage from "./pages/ItemPage";
+import ItemListContainerPage from "./pages/ItemListContainerPage";
+
+const navLinksArray = [
+  { title: "Home", path: "/" },
+  { title: "Home 1", path: "#" },
+  { title: "Home 2", path: "#" },
+];
 
 function App() {
   let [count, setCount] = useState(0);
   return (
     <>
-      <Navbar title={"Alfredo's Store"} countCart={count} />
-      <ItemListContainer setCount={setCount} countCart={count} />
+      <Router>
+        <Navbar
+          title={"Alfredo's Store"}
+          countCart={count}
+          navLinksArray={navLinksArray}
+        />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ItemListContainerPage setCount={setCount} countCart={count} />
+            }
+          ></Route>
+          <Route path="/Product" element={<ItemPage />}></Route>
+        </Routes>
+      </Router>
     </>
   );
 }
