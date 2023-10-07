@@ -73,39 +73,6 @@ const MyCard = ({
             Buy
           </Button>
         </Box>
-        {/*         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
-            <Paper sx={{ p: 1 }}>Price {price}$</Paper>
-            <Paper sx={{ p: 1 }}>Stock {productStcok}</Paper>
-            <Paper sx={{ p: 1 }}>{rating}</Paper>
-          </Box>
-          <Box
-            sx={{
-              textAlign: "center",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Button onClick={remove} variant="contained">
-              -
-            </Button>
-            <Paper sx={{ px: 4, py: 1 }}>{product}</Paper>
-            <Button onClick={add} variant="contained" disabled={stockReach}>
-              +
-            </Button>
-            <Button
-              sx={{ mx: 1 }}
-              onClick={() => addToCart(product)}
-              variant="contained"
-              color="info"
-            >
-              add
-            </Button>
-            <Button onClick={deleteItems} variant="contained" color="info">
-              <DeleteIcon />
-            </Button>
-          </Box>
-        </Box> */}
       </CardContent>
     </Card>
   );

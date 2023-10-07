@@ -34,14 +34,17 @@ const ItemListContainer = ({ setCount, countCart }) => {
         setIndexCard((indexCard) => indexCard + 1);
         counter++;
       }
-    }, 2000);
+    }, 1000);
     return () => clearInterval(interval);
   }, [data]);
 
   let cardDraftList = data?.slice(0, indexCard).map((products) => {
     return (
       <Grid xs={12} sm={4} key={products.id}>
-        <Link to={`/ItemDetailPage/${products.id}`}>
+        <Link
+          to={`/ItemDetailPage/${products.id}`}
+          style={{ textDecoration: "none" }}
+        >
           <Card
             greeeting={products.title}
             image={products.image}
