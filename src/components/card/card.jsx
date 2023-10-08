@@ -1,11 +1,8 @@
-import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { CardMedia } from "@mui/material";
 
 const MyCard = ({
@@ -17,25 +14,6 @@ const MyCard = ({
   rating,
   addToCart,
 }) => {
-  /*   let [product, setProduct] = useState(0);
-  const [productStcok] = useState(stock);
-  const [stockReach, setStockReach] = useState(false);
-
-  const add = () => {
-    product >= productStcok ? setStockReach(true) : setProduct(product + 1);
-  };
-  const remove = () => {
-    if (product >= 1) {
-      setProduct(product - 1);
-      setStockReach(false);
-    } else {
-      setProduct((product = 0));
-    }
-  };
-  const deleteItems = () => {
-    setCount(0);
-    setProduct(0);
-  }; */
   return (
     <Card
       sx={{

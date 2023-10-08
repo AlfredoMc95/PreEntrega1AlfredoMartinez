@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { linkProducts } from "../components/url/urls";
@@ -12,12 +14,31 @@ import {
   Typography,
 } from "@mui/material";
 
-import DeleteIcon from "@mui/icons-material/Delete";
+/* import DeleteIcon from "@mui/icons-material/Delete"; */
 
 const ItemDetailPage = () => {
   let { id } = useParams();
 
   const { data } = UseFetch(linkProducts, id);
+
+  let [product, setProduct] = useState(0);
+  const [productStcok] = useState(data?.stock);
+  const [stockReach, setStockReach] = useState(false);
+
+  const add = () => {
+    product >= productStcok ? setStockReach(true) : setProduct(product + 1);
+  };
+  const remove = () => {
+    if (product >= 1) {
+      setProduct(product - 1);
+      setStockReach(false);
+    } else {
+      setProduct((product = 0));
+    }
+  };
+  /*   const deleteItems = () => {
+    setProduct(0);
+  }; */
 
   return (
     <>
@@ -71,15 +92,19 @@ const ItemDetailPage = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <Button variant="contained">-</Button>
-                  <Paper sx={{ px: 4, py: 1 }}>asdasd</Paper>
-                  <Button variant="contained">+</Button>
+                  <Button variant="contained" onClick={remove}>
+                    -
+                  </Button>
+                  <Paper sx={{ px: 4, py: 1 }}>{product}</Paper>
+                  <Button variant="contained" onClick={add}>
+                    +
+                  </Button>
                   <Button sx={{ mx: 1 }} variant="contained" color="info">
                     add
                   </Button>
-                  <Button variant="contained" color="info">
+                  {/*                   <Button variant="contained" color="info">
                     <DeleteIcon />
-                  </Button>
+                  </Button> */}
                 </Box>
               </Box>
             </CardContent>
