@@ -5,15 +5,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { CardMedia } from "@mui/material";
 
-const MyCard = ({
-  image,
-  price,
-  greeeting,
-  setCount,
-  stock,
-  rating,
-  addToCart,
-}) => {
+const MyCard = ({ image, greeeting }) => {
   return (
     <Card
       sx={{

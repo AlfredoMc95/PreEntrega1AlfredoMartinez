@@ -16,29 +16,23 @@ import {
 
 /* import DeleteIcon from "@mui/icons-material/Delete"; */
 
-const ItemDetailPage = () => {
+const ItemDetailPage = ({ addToCart }) => {
   let { id } = useParams();
 
   const { data } = UseFetch(linkProducts, id);
 
   let [product, setProduct] = useState(0);
-  const [productStcok] = useState(data?.stock);
-  const [stockReach, setStockReach] = useState(false);
 
   const add = () => {
-    product >= productStcok ? setStockReach(true) : setProduct(product + 1);
+    setProduct(product + 1);
   };
   const remove = () => {
     if (product >= 1) {
       setProduct(product - 1);
-      setStockReach(false);
     } else {
       setProduct((product = 0));
     }
   };
-  /*   const deleteItems = () => {
-    setProduct(0);
-  }; */
 
   return (
     <>
@@ -99,12 +93,14 @@ const ItemDetailPage = () => {
                   <Button variant="contained" onClick={add}>
                     +
                   </Button>
-                  <Button sx={{ mx: 1 }} variant="contained" color="info">
+                  <Button
+                    sx={{ mx: 1 }}
+                    variant="contained"
+                    color="info"
+                    onClick={() => addToCart(product)}
+                  >
                     add
                   </Button>
-                  {/*                   <Button variant="contained" color="info">
-                    <DeleteIcon />
-                  </Button> */}
                 </Box>
               </Box>
             </CardContent>
