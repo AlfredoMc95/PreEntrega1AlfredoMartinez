@@ -14,7 +14,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     let counter = indexCard;
     const interval = setInterval(() => {
-      if (counter >= data.length) {
+      if (counter >= data?.length) {
         clearInterval(interval);
       } else {
         setIndexCard((indexCard) => indexCard + 1);

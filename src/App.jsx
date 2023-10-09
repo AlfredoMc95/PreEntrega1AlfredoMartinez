@@ -20,16 +20,32 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   let [count, setCount] = useState(0);
 
-  const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
+  const [selectedItem, setSelectedItem] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
+  const addToCart = () => {
+    const itemIndex = cartItems.findIndex((item) => item.item === selectedItem);
+
+    if (itemIndex !== -1) {
+      const updatedCart = [...cartItems];
+      updatedCart[itemIndex].quantity = quantity;
+      setCartItems(updatedCart);
+    } else {
+      const updatedCart = [...cartItems, { item: selectedItem, quantity }];
+      setCartItems(updatedCart);
+    }
+
+    setSelectedItem("");
+    setQuantity(0);
   };
 
   useEffect(() => {
     const totalItems = cartItems.reduce(
-      (accumulator, currentValue) => accumulator + currentValue,
+      (accumulator, currentValue) => accumulator + currentValue.quantity,
       0
     );
 
+    console.log(cartItems);
     setCount(totalItems);
   }, [cartItems, setCount]);
 
@@ -47,7 +63,13 @@ function App() {
           <Route path="/CategoriPage" element={<CategoriPage />}></Route>
           <Route
             path="/ItemDetailPage/:id"
-            element={<ItemDetailPage addToCart={addToCart} />}
+            element={
+              <ItemDetailPage
+                addToCart={addToCart}
+                setSelectedItem={setSelectedItem}
+                setQuantity={setQuantity}
+              />
+            }
           ></Route>
           <Route
             path="/CategoriPage/:categoryId"

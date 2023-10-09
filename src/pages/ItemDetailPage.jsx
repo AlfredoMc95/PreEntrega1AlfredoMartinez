@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -14,9 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 
-/* import DeleteIcon from "@mui/icons-material/Delete"; */
-
-const ItemDetailPage = ({ addToCart }) => {
+const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
   let { id } = useParams();
 
   const { data } = UseFetch(linkProducts, id);
@@ -32,6 +30,15 @@ const ItemDetailPage = ({ addToCart }) => {
     } else {
       setProduct((product = 0));
     }
+  };
+
+  useEffect(() => {
+    setSelectedItem(data?.title);
+    setQuantity(product);
+  }, [data?.title, product, setSelectedItem, setQuantity]);
+
+  const buy = () => {
+    addToCart();
   };
 
   return (
@@ -97,7 +104,7 @@ const ItemDetailPage = ({ addToCart }) => {
                     sx={{ mx: 1 }}
                     variant="contained"
                     color="info"
-                    onClick={() => addToCart(product)}
+                    onClick={buy}
                   >
                     add
                   </Button>
