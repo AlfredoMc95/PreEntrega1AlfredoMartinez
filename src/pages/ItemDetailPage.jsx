@@ -56,7 +56,7 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
           <CardMedia
             component="img"
             image={data?.image}
-            sx={{ width: "40%" }}
+            sx={{ width: "40%", objectFit: "contain" }}
             alt={`image ${data?.title}`}
           />
           <Box sx={{ width: "60%" }}>
