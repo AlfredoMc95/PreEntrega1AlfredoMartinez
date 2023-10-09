@@ -10,8 +10,10 @@ import ItemListContainerPage from "./pages/ItemListContainerPage";
 
 const navLinksArray = [
   { title: "Home", path: "/" },
-  { title: "Home 1", path: "#" },
-  { title: "Home 2", path: "#" },
+  { title: "Men's clothing", path: "/CategoriPage/men's clothing" },
+  { title: "jewelery", path: "/CategoriPage/jewelery" },
+  { title: "Electronics", path: "/CategoriPage/electronics" },
+  { title: "women's clothing", path: "/CategoriPage/women's clothing" },
 ];
 
 function App() {
@@ -45,11 +47,23 @@ function App() {
           <Route path="/CategoriPage" element={<CategoriPage />}></Route>
           <Route
             path="/ItemDetailPage/:id"
-            element={
-              <ItemDetailPage
-                addToCart={addToCart}
-              />
-            }
+            element={<ItemDetailPage addToCart={addToCart} />}
+          ></Route>
+          <Route
+            path="/CategoriPage/:categoryId"
+            element={<CategoriPage />}
+          ></Route>
+          <Route
+            path="/CategoriPage/:categoryId"
+            element={<CategoriPage />}
+          ></Route>
+          <Route
+            path="/CategoriPage/:categoryId"
+            element={<CategoriPage />}
+          ></Route>
+          <Route
+            path="/CategoriPage/:categoryId"
+            element={<CategoriPage />}
           ></Route>
         </Routes>
       </Router>

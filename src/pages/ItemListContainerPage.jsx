@@ -20,7 +20,7 @@ const ItemListContainer = () => {
         setIndexCard((indexCard) => indexCard + 1);
         counter++;
       }
-    }, 1000);
+    }, 500);
     return () => clearInterval(interval);
   }, [data]);
 
