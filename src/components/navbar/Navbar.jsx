@@ -8,13 +8,15 @@ import {
   Typography,
 } from "@mui/material";
 import NabListDrawer from "./NabListDrawer";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CartWidgete from "../cartWidgete/CartWidgete";
 import { NavLink } from "react-router-dom";
+import { ItemsContext } from "../../context/ItemsContext";
 
-const Navbar = ({ title = "Titulo", countCart, navLinksArray }) => {
+const Navbar = ({ title = "Titulo", countCart }) => {
   const [open, setOpen] = useState(false);
+  const [navLinksArray] = useContext(ItemsContext);
 
   return (
     <>

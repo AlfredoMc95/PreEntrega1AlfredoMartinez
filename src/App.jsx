@@ -1,20 +1,11 @@
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
 import { useEffect, useState } from "react";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import CategoriPage from "./pages/CategoriPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
-
-const navLinksArray = [
-  { title: "Home", path: "/" },
-  { title: "Men's clothing", path: "/CategoriPage/men's clothing" },
-  { title: "jewelery", path: "/CategoriPage/jewelery" },
-  { title: "Electronics", path: "/CategoriPage/electronics" },
-  { title: "women's clothing", path: "/CategoriPage/women's clothing" },
-];
+import { ItemProvider } from "./context/ItemsContext";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -50,13 +41,9 @@ function App() {
   }, [cartItems, setCount]);
 
   return (
-    <>
+    <ItemProvider>
       <Router>
-        <Navbar
-          title={"Alfredo's Store"}
-          countCart={count}
-          navLinksArray={navLinksArray}
-        />
+        <Navbar title={"Alfredo's Store"} countCart={count} />
 
         <Routes>
           <Route path="/" element={<ItemListContainerPage />}></Route>
@@ -89,7 +76,7 @@ function App() {
           ></Route>
         </Routes>
       </Router>
-    </>
+    </ItemProvider>
   );
 }
 
