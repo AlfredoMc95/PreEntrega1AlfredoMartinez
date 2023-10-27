@@ -1,4 +1,5 @@
 import { Box, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const NabListDrawer = ({ navLinksArray }) => {
   return (
@@ -8,8 +9,9 @@ const NabListDrawer = ({ navLinksArray }) => {
           <ListItem key={navLinksArray.title}>
             <ListItemButton
               key={buttons.title}
-              components="a"
+              component={NavLink}
               href={buttons.path}
+              to={buttons.path}
             >
               <ListItemText primary={buttons.title} />
             </ListItemButton>
