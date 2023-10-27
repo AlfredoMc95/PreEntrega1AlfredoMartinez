@@ -6,16 +6,21 @@ import CategoriPage from "./pages/CategoriPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
 import { ItemProvider } from "./context/ItemsContext";
+
+//get fireStore data
 import { db } from "./firebase/firebaseConfig";
 import { collection, query, getDocs } from "firebase/firestore";
 
 function App() {
-  const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setQuantity] = useState(0);
   let [count, setCount] = useState(0);
 
+  //get fireStore data
+  const [items, setItems] = useState([]);
+
+  //get fireStore data
   useEffect(() => {
     const getProducts = async () => {
       const q = query(collection(db, "products"));
@@ -23,9 +28,9 @@ function App() {
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
         docs.push({ ...doc.data(), id: doc.id });
       });
+      setItems(docs);
     };
     getProducts();
   }, []);
