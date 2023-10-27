@@ -6,13 +6,39 @@ import CategoriPage from "./pages/CategoriPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
 import { ItemProvider } from "./context/ItemsContext";
+import { db } from "./firebase/firebaseConfig";
+import { collection, query, getDocs } from "firebase/firestore";
 
 function App() {
+  const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  let [count, setCount] = useState(0);
-
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setQuantity] = useState(0);
+  let [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const q = query(collection(db, "products"));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+    };
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    const totalItems = cartItems.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.quantity,
+      0
+    );
+
+    console.log(cartItems);
+    setCount(totalItems);
+  }, [cartItems, setCount]);
 
   const addToCart = () => {
     const itemIndex = cartItems.findIndex((item) => item.item === selectedItem);
@@ -29,16 +55,6 @@ function App() {
     setSelectedItem("");
     setQuantity(0);
   };
-
-  useEffect(() => {
-    const totalItems = cartItems.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.quantity,
-      0
-    );
-
-    console.log(cartItems);
-    setCount(totalItems);
-  }, [cartItems, setCount]);
 
   return (
     <ItemProvider>
