@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { CardMedia } from "@mui/material";
 
-const MyCard = ({ image, greeeting }) => {
+const MyCard = ({ item }) => {
   return (
     <Card
       sx={{
@@ -19,8 +19,8 @@ const MyCard = ({ image, greeeting }) => {
       <CardMedia
         component={"img"}
         sx={{ height: 400, objectFit: "contain", background: "#FFFFFF" }}
-        image={image}
-        title={greeeting}
+        image={item.img}
+        title={item.name}
       />
       <CardContent
         sx={{
@@ -35,7 +35,7 @@ const MyCard = ({ image, greeeting }) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ height: 120 }}>
-            {greeeting}
+            {item.name}
           </Typography>
         </Box>
         <Box sx={{ textAlign: "center" }}>

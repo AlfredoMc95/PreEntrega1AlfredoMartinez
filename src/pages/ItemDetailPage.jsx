@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import { linkProducts } from "../components/url/urls";
-import UseFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import {
   Button,
@@ -13,13 +10,35 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { db } from "../firebase/firebaseConfig";
+import {
+  collection,
+  query,
+  getDocs,
+  where,
+  documentId,
+} from "firebase/firestore";
 
 const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
   let { id } = useParams();
-
-  const { data } = UseFetch(linkProducts, id);
-
+  const [items, setItems] = useState([]);
   let [product, setProduct] = useState(0);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      let q = query(collection(db, "products"), where(documentId(), "==", id));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+      setItems(docs);
+    };
+    getProducts();
+  }, [items]);
+
+  console.log(items);
 
   const add = () => {
     setProduct(product + 1);
@@ -33,9 +52,9 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
   };
 
   useEffect(() => {
-    setSelectedItem(data?.title);
+    setSelectedItem(items?.title);
     setQuantity(product);
-  }, [data?.title, product, setSelectedItem, setQuantity]);
+  }, [items?.title, product, setSelectedItem, setQuantity]);
 
   const buy = () => {
     addToCart();
@@ -55,9 +74,9 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
         >
           <CardMedia
             component="img"
-            image={data?.image}
+            image={items?.image}
             sx={{ width: "40%", objectFit: "contain" }}
-            alt={`image ${data?.title}`}
+            alt={`image ${items?.title}`}
           />
           <Box sx={{ width: "60%" }}>
             <CardContent
@@ -71,20 +90,20 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
             >
               <Box sx={{ display: "flex", gap: 10 }}>
                 <Typography component="div" variant="h5">
-                  {data?.title}
+                  {items?.title}
                 </Typography>
                 <Typography sx={{ fontSize: 40, color: "#EDDD53" }}>
-                  {data?.rating.rate}
+                  {items?.rating.rate}
                 </Typography>
               </Box>
               <Paper sx={{ py: 5, px: 2 }}>
                 <Typography variant="subtitle1" component="div">
-                  {data?.description}
+                  {items?.description}
                 </Typography>
               </Paper>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
-                  <Paper sx={{ p: 1 }}>Price {data?.price}$</Paper>
+                  <Paper sx={{ p: 1 }}>Price {items?.price}$</Paper>
                 </Box>
                 <Box
                   sx={{

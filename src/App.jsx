@@ -7,33 +7,11 @@ import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
 import { ItemProvider } from "./context/ItemsContext";
 
-//get fireStore data
-import { db } from "./firebase/firebaseConfig";
-import { collection, query, getDocs } from "firebase/firestore";
-
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setQuantity] = useState(0);
   let [count, setCount] = useState(0);
-
-  //get fireStore data
-  const [items, setItems] = useState([]);
-
-  //get fireStore data
-  useEffect(() => {
-    const getProducts = async () => {
-      const q = query(collection(db, "products"));
-      const docs = [];
-      const querySnapshot = await getDocs(q);
-
-      querySnapshot.forEach((doc) => {
-        docs.push({ ...doc.data(), id: doc.id });
-      });
-      setItems(docs);
-    };
-    getProducts();
-  }, []);
 
   useEffect(() => {
     const totalItems = cartItems.reduce(
@@ -41,7 +19,6 @@ function App() {
       0
     );
 
-    console.log(cartItems);
     setCount(totalItems);
   }, [cartItems, setCount]);
 
