@@ -7,6 +7,7 @@ import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
 import BuyCartPage from "./pages/BuyCartPage";
 import { ItemProvider } from "./context/ItemsContext";
+import ConfirmBuyPage from "./pages/ConfirmBuyPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -94,6 +95,7 @@ function App() {
               />
             }
           ></Route>
+          <Route path="/confirmBuy" element={<ConfirmBuyPage />}></Route>
         </Routes>
       </Router>
     </ItemProvider>

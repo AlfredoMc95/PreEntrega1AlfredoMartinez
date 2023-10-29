@@ -1,7 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Button, Container, Grid, Paper, Typography } from "@mui/material";
 import CartItemCard from "../components/cartItemCard/CartItemCard";
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ItemsContext } from "../context/ItemsContext";
 
 const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
+  const [navLinksArray, buyCartLink, confirmBuy] = useContext(ItemsContext);
   const deleteeItem = (itemToRemove) => {
     const updatedCart = cartItems.filter((item) => item.item !== itemToRemove);
     setCartItems(updatedCart);
@@ -38,9 +43,8 @@ const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
                 <Button
                   sx={{ m: 2 }}
                   variant="contained"
-                  //key={buttons.title}
-                  //component={NavLink}
-                  //to={buttons.path}
+                  component={NavLink}
+                  to={confirmBuy.path}
                 >
                   Confirm
                 </Button>

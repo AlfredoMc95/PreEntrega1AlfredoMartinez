@@ -39,7 +39,7 @@ const CartItemCard = ({ itemDet, deleteeItem }) => {
                 Price: {itemDet.item.price}$
               </Typography>
               <Button onClick={() => deleteeItem(itemDet.item)}>
-                <DeleteForeverIcon />
+                <DeleteForeverIcon fontSize="large" />
               </Button>
             </CardContent>
           </Box>
@@ -49,6 +49,7 @@ const CartItemCard = ({ itemDet, deleteeItem }) => {
               width: 200,
               height: 200,
               objectFit: "contain",
+              p: 2,
             }}
             image={itemDet.item.img}
             alt="Live from space album cover"

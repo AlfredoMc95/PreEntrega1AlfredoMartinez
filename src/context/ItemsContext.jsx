@@ -11,13 +11,15 @@ const navLinksArray = [
 ];
 
 const buyCartLink = { title: "buyCar", path: "/buyCar" };
+const confirmBuyLink = { title: "confirmBuy", path: "/confirmBuy" };
 
 export const ItemProvider = ({ children }) => {
   const [items, setItems] = useState(navLinksArray);
   const [buyCart, setBuyCart] = useState(buyCartLink);
+  const [confirmBuy, setConfirmBuy] = useState(confirmBuyLink);
 
   return (
-    <ItemsContext.Provider value={[items, buyCart]}>
+    <ItemsContext.Provider value={[items, buyCart, confirmBuy]}>
       {children}
     </ItemsContext.Provider>
   );
