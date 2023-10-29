@@ -20,7 +20,7 @@ const DetailCArd = ({
   setQuantity,
 }) => {
   useEffect(() => {
-    setSelectedItem(item?.name);
+    setSelectedItem(item);
     setQuantity(product);
   }, [item?.name, product, setSelectedItem, setQuantity]);
 

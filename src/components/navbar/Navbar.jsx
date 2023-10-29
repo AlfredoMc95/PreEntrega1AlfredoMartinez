@@ -58,7 +58,7 @@ const Navbar = ({ title = "Titulo", countCart }) => {
               </Button>
             ))}
           </Box>
-          <IconButton component={NavLink} to={buyCartLink.path}>
+          <IconButton color="inherit" component={NavLink} to={buyCartLink.path}>
             <CartWidgete countCart={countCart} />
           </IconButton>
         </Toolbar>

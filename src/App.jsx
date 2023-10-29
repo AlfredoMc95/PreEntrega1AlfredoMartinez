@@ -33,7 +33,6 @@ function App() {
     } else {
       const updatedCart = [...cartItems, { item: selectedItem, quantity }];
       setCartItems(updatedCart);
-      console.log(updatedCart);
     }
 
     setSelectedItem("");
@@ -74,7 +73,12 @@ function App() {
             path="/CategoriPage/:categoryId"
             element={<CategoriPage />}
           ></Route>
-          <Route path="/buyCar" element={<BuyCartPage />}></Route>
+          <Route
+            path="/buyCar"
+            element={
+              <BuyCartPage cartItems={cartItems} setCartItems={setCartItems} />
+            }
+          ></Route>
         </Routes>
       </Router>
     </ItemProvider>
