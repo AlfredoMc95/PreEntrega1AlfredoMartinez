@@ -1,17 +1,7 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { Container, Grid, Paper, Typography } from "@mui/material";
+import CartItemCard from "../components/cartItemCard/CartItemCard";
 
-const BuyCartPage = ({ cartItems, setCartItems }) => {
+const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
   const deleteeItem = (itemToRemove) => {
     const updatedCart = cartItems.filter((item) => item.item !== itemToRemove);
     setCartItems(updatedCart);
@@ -30,50 +20,23 @@ const BuyCartPage = ({ cartItems, setCartItems }) => {
             </>
           ) : (
             cartItems.map((itemDet) => (
-              <Grid key={itemDet.item.id} xs={12}>
-                <Card sx={{ display: "flex", justifyContent: "space-between" }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <CardContent sx={{ flex: "1 0 auto", maxWidth: "80%" }}>
-                      <Typography component="div" variant="h5">
-                        {itemDet.item.name}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        color="text.secondary"
-                        component="div"
-                      >
-                        Quantity: {itemDet.quantity}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        color="text.secondary"
-                        component="div"
-                      >
-                        Price: {itemDet.item.price}$
-                      </Typography>
-                      <Button onClick={() => deleteeItem(itemDet.item)}>
-                        <DeleteForeverIcon />
-                      </Button>
-                    </CardContent>
-                  </Box>
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      width: 200,
-                      height: 200,
-                      objectFit: "contain",
-                    }}
-                    image={itemDet.item.img}
-                    alt="Live from space album cover"
-                  />
-                </Card>
-              </Grid>
+              <CartItemCard
+                key={itemDet.item.id}
+                itemDet={itemDet}
+                deleteeItem={deleteeItem}
+              />
             ))
+          )}
+          {cartItems.length === 0 ? (
+            <></>
+          ) : (
+            <>
+              <Paper sx={{ width: "100%", p: 10, textAlign: "center" }}>
+                <Typography variant="h3" component="div">
+                  Total:{totalPrice}$
+                </Typography>
+              </Paper>
+            </>
           )}
         </Grid>
       </Container>

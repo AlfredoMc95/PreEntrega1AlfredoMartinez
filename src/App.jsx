@@ -12,6 +12,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState("");
   const [quantity, setQuantity] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   let [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -22,6 +23,16 @@ function App() {
 
     setCount(totalItems);
   }, [cartItems, setCount]);
+
+  useEffect(() => {
+    const totalItems = cartItems.reduce((accumulator, currentValue) => {
+      const totalPriceQuantity =
+        currentValue.quantity * currentValue.item.price;
+      return accumulator + totalPriceQuantity;
+    }, 0);
+
+    setTotalPrice(totalItems);
+  }, [cartItems, setTotalPrice]);
 
   const addToCart = () => {
     const itemIndex = cartItems.findIndex((item) => item.item === selectedItem);
@@ -76,7 +87,11 @@ function App() {
           <Route
             path="/buyCar"
             element={
-              <BuyCartPage cartItems={cartItems} setCartItems={setCartItems} />
+              <BuyCartPage
+                cartItems={cartItems}
+                totalPrice={totalPrice}
+                setCartItems={setCartItems}
+              />
             }
           ></Route>
         </Routes>
