@@ -1,4 +1,4 @@
-import { Container, Grid, Paper, Typography } from "@mui/material";
+import { Button, Container, Grid, Paper, Typography } from "@mui/material";
 import CartItemCard from "../components/cartItemCard/CartItemCard";
 
 const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
@@ -35,6 +35,15 @@ const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
                 <Typography variant="h3" component="div">
                   Total:{totalPrice}$
                 </Typography>
+                <Button
+                  sx={{ m: 2 }}
+                  variant="contained"
+                  //key={buttons.title}
+                  //component={NavLink}
+                  //to={buttons.path}
+                >
+                  Confirm
+                </Button>
               </Paper>
             </>
           )}
