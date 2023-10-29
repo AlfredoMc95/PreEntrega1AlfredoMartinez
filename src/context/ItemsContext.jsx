@@ -10,10 +10,15 @@ const navLinksArray = [
   { title: "women's clothing", path: "/CategoriPage/women's clothing" },
 ];
 
+const buyCartLink = { title: "buyCar", path: "/buyCar" };
+
 export const ItemProvider = ({ children }) => {
   const [items, setItems] = useState(navLinksArray);
+  const [buyCart, setBuyCart] = useState(buyCartLink);
 
   return (
-    <ItemsContext.Provider value={[items]}>{children}</ItemsContext.Provider>
+    <ItemsContext.Provider value={[items, buyCart]}>
+      {children}
+    </ItemsContext.Provider>
   );
 };

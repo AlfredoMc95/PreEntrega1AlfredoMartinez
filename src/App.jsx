@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CategoriPage from "./pages/CategoriPage";
 import ItemDetailPage from "./pages/ItemDetailPage";
 import ItemListContainerPage from "./pages/ItemListContainerPage";
+import BuyCartPage from "./pages/BuyCartPage";
 import { ItemProvider } from "./context/ItemsContext";
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
             path="/CategoriPage/:categoryId"
             element={<CategoriPage />}
           ></Route>
+          <Route path="/buyCar" element={<BuyCartPage />}></Route>
         </Routes>
       </Router>
     </ItemProvider>

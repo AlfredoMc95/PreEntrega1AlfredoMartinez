@@ -16,7 +16,7 @@ import { ItemsContext } from "../../context/ItemsContext";
 
 const Navbar = ({ title = "Titulo", countCart }) => {
   const [open, setOpen] = useState(false);
-  const [navLinksArray] = useContext(ItemsContext);
+  const [navLinksArray, buyCartLink] = useContext(ItemsContext);
 
   return (
     <>
@@ -58,7 +58,9 @@ const Navbar = ({ title = "Titulo", countCart }) => {
               </Button>
             ))}
           </Box>
-          <CartWidgete countCart={countCart} />
+          <IconButton component={NavLink} to={buyCartLink.path}>
+            <CartWidgete countCart={countCart} />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer

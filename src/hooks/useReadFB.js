@@ -22,7 +22,7 @@ const UseReadFB = (filter = "") => {
       setItems(docs);
     };
     getProducts();
-  }, [items]);
+  }, [filter]);
 
   return items;
 };
