@@ -8,8 +8,22 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { useEffect } from "react";
 
-const DetailCArd = ({ add, remove, buy, item, product }) => {
+const DetailCArd = ({
+  add,
+  remove,
+  buy,
+  item,
+  product,
+  setSelectedItem,
+  setQuantity,
+}) => {
+  useEffect(() => {
+    setSelectedItem(item?.name);
+    setQuantity(product);
+  }, [item?.name, product, setSelectedItem, setQuantity]);
+
   return (
     <>
       <Container sx={{ py: 10 }}>

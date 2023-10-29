@@ -32,6 +32,7 @@ function App() {
     } else {
       const updatedCart = [...cartItems, { item: selectedItem, quantity }];
       setCartItems(updatedCart);
+      console.log(updatedCart);
     }
 
     setSelectedItem("");

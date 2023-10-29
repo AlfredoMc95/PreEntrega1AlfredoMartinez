@@ -32,8 +32,6 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
     getProducts();
   }, [id]);
 
-  console.log(items);
-
   const add = () => {
     setProduct(product + 1);
   };
@@ -44,11 +42,6 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
       setProduct((product = 0));
     }
   };
-
-  useEffect(() => {
-    setSelectedItem(items?.name);
-    setQuantity(product);
-  }, [items?.name, product, setSelectedItem, setQuantity]);
 
   const buy = () => {
     addToCart();
@@ -65,6 +58,8 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
             buy={buy}
             item={item}
             product={product}
+            setSelectedItem={setSelectedItem}
+            setQuantity={setQuantity}
           />
         );
       })}
