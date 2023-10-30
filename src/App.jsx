@@ -95,7 +95,15 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/confirmBuy" element={<ConfirmBuyPage />}></Route>
+          <Route
+            path="/confirmBuy"
+            element={
+              <ConfirmBuyPage
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+              />
+            }
+          ></Route>
         </Routes>
       </Router>
     </ItemProvider>
