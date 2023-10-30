@@ -1,4 +1,4 @@
-# Entrega final E-commerce con React, Material-UI (MUI) y Firebase
+# Entrega final E-commerce Alfredo MArtinez
 
 Bienvenido a mi proyecto final, de tienda virtual desarrollada con React, Material-UI y Firebase. Esta aplicación te permitirá hacer un simulacro hasta la confirmacion del pedido sin un metodo de pago para comprar varios productos dentro de una tienda virtual.
 
@@ -23,3 +23,7 @@ Node
 Material-UI
 Firebase.
 ```
+
+Créditos
+
+Este proyecto fue creado con amor y dedicación para el curso de ReactJS en CoderHouse.
