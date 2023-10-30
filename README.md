@@ -6,10 +6,20 @@ Bienvenido a mi proyecto final, de tienda virtual desarrollada con React, Materi
 
 Antes de comenzar, asegúrate de tener Node.js y npm (Node Package Manager) instalados en tu sistema. Luego, sigue estos pasos:
 
-1. Clona este repositorio en tu máquina local:
+Clona este repositorio en tu máquina local:
 
 ```bash
 gh repo clone AlfredoMc95/ProyectoFinalAlfredoMartinez
 npm install
 npm run dev
+```
+
+Tecnologías Utilizadas
+
+```bash
+React
+Vite
+Node
+Material-UI
+Firebase.
 ```
