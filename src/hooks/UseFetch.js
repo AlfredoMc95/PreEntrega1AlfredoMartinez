@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+//API Fake Store, solo se usar para llamar y posteriormente llenar la base de datos con los elementos de esta API
+
 const UseFetch = (url, id = "") => {
   const [data, setData] = useState(null);
 

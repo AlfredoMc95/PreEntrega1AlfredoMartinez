@@ -4,12 +4,14 @@ Bienvenido a mi proyecto final, de tienda virtual desarrollada con React, Materi
 
 ## Configuración del Proyecto
 
+![PortadaReadme](\public\PortadaReadme.png)
+
 Antes de comenzar, asegúrate de tener Node.js y npm (Node Package Manager) instalados en tu sistema. Luego, sigue estos pasos:
 
 Clona este repositorio en tu máquina local:
 
 ```bash
-gh repo clone AlfredoMc95/ProyectoFinalAlfredoMartinez
+git clone AlfredoMc95/ProyectoFinalAlfredoMartinez
 npm install
 npm run dev
 ```

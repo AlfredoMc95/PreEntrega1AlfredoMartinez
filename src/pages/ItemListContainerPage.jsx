@@ -4,6 +4,7 @@ import Card from "../components/card/card";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
 import UseReadFB from "../hooks/useReadFB";
+import HomeImage from "../components/homeImage/HomeImage";
 
 /* import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig"; */
@@ -26,6 +27,7 @@ const ItemListContainer = () => {
     return () => clearInterval(interval);
   }, [useReadFB]);
 
+  //toma la api fakeStore y sube todos los elementos en la base de datos, no see borrar por si es necesario llenar de nuevo la base de datos
   /*   useEffect(() => {
     data?.map((currentProduct) => {
       const docRef = addDoc(collection(db, "products"), {
@@ -41,22 +43,25 @@ const ItemListContainer = () => {
   }, []); */
 
   return (
-    <Container sx={{ py: 10 }}>
-      <Grid container spacing={2}>
-        {useReadFB.map((item) => {
-          return (
-            <Grid xs={12} sm={4} key={item.id}>
-              <Link
-                to={`/ItemDetailPage/${item.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Card item={item} />
-              </Link>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Container>
+    <>
+      <HomeImage FBImage={useReadFB[8]} />
+      <Container sx={{ py: 10 }}>
+        <Grid container spacing={2}>
+          {useReadFB.map((item) => {
+            return (
+              <Grid xs={12} sm={4} key={item.id}>
+                <Link
+                  to={`/ItemDetailPage/${item.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Card item={item} />
+                </Link>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Container>
+    </>
   );
 };
 
