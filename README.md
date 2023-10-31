@@ -4,7 +4,7 @@ Bienvenido a mi proyecto final, de tienda virtual desarrollada con React, Materi
 
 ## Configuración del Proyecto
 
-![PortadaReadme](https://github.com/AlfredoMc95/ProyectoFinalAlfredoMartinez/blob/main/public/PortadaReadme.png)
+![PortadaReadme](https://github.com/AlfredoMc95/ProyectoFinalAlfredoMartinez/blob/main/public/PortadaReadme.gif)
 
 Antes de comenzar, asegúrate de tener Node.js y npm (Node Package Manager) instalados en tu sistema. Luego, sigue estos pasos:
 
