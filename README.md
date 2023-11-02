@@ -33,6 +33,13 @@ Firebase.
 Netlify
 ```
 
+Usuario test
+
+```bash
+name: anon@gmail.com
+password: anon123
+```
+
 Créditos
 
 Este proyecto fue creado con amor y dedicación para el curso de ReactJS en CoderHouse.
