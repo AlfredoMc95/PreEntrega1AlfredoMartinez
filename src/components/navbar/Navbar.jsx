@@ -8,15 +8,39 @@ import {
   Typography,
 } from "@mui/material";
 import NabListDrawer from "./NabListDrawer";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CartWidgete from "../cartWidgete/CartWidgete";
 import { NavLink } from "react-router-dom";
 import { ItemsContext } from "../../context/ItemsContext";
+import { auth } from "../../firebase/firebaseConfig";
 
 const Navbar = ({ title = "Titulo", countCart }) => {
   const [open, setOpen] = useState(false);
   const [navLinksArray, buyCartLink] = useContext(ItemsContext);
+  const LogIn = { title: "signIn", path: "/sigin" };
+  const [user, setUser] = useState(null);
+
+  const signOut = () => {
+    auth.signOut();
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User is signed in
+        setUser(authUser);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
+    });
+
+    // Unsubscribe when the component unmounts
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <>
@@ -61,6 +85,22 @@ const Navbar = ({ title = "Titulo", countCart }) => {
           <IconButton color="inherit" component={NavLink} to={buyCartLink.path}>
             <CartWidgete countCart={countCart} />
           </IconButton>
+
+          <Typography
+            variant="overline"
+            fontSize="large"
+            component={NavLink}
+            to={LogIn.path}
+            underline="none"
+            sx={{
+              fontWeight: "bold",
+              textDecoration: "none",
+              color: "white",
+            }}
+            onClick={user ? signOut : undefined} // Check if user is logged in before showing "Log Out"
+          >
+            {user ? `${user.email}` : "Log In"}
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer

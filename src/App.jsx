@@ -8,6 +8,7 @@ import ItemListContainerPage from "./pages/ItemListContainerPage";
 import BuyCartPage from "./pages/BuyCartPage";
 import { ItemProvider } from "./context/ItemsContext";
 import ConfirmBuyPage from "./pages/ConfirmBuyPage";
+import SignInPage from "./pages/SignInPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -104,6 +105,7 @@ function App() {
               />
             }
           ></Route>
+          <Route path="/sigIn" element={<SignInPage />} />
         </Routes>
       </Router>
     </ItemProvider>

@@ -11,7 +11,7 @@ const CategoriPage = () => {
 
   return (
     <>
-      <Container sx={{ py: 10 }}>
+      <Container sx={{ py: 14 }}>
         <Grid container spacing={2} justifyContent="center">
           {useReadFB?.map((item) => (
             <Grid xs={12} sm={4} key={item.id} container spacing={2}>
