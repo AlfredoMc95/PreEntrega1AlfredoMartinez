@@ -28,15 +28,12 @@ const Navbar = ({ title = "Titulo", countCart }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        // User is signed in
         setUser(authUser);
       } else {
-        // User is signed out
         setUser(null);
       }
     });
 
-    // Unsubscribe when the component unmounts
     return () => {
       unsubscribe();
     };
@@ -96,6 +93,7 @@ const Navbar = ({ title = "Titulo", countCart }) => {
               fontWeight: "bold",
               textDecoration: "none",
               color: "white",
+              mx: 2,
             }}
             onClick={user ? signOut : undefined} // Check if user is logged in before showing "Log Out"
           >
