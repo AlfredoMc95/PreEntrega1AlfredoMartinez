@@ -97,7 +97,7 @@ const Navbar = ({ title = "Titulo", countCart }) => {
             }}
             onClick={user ? signOut : undefined} // Check if user is logged in before showing "Log Out"
           >
-            {user ? `${user.email}` : "Log In"}
+            {user ? `${user.email} Log Out` : "Log In"}
           </Typography>
         </Toolbar>
       </AppBar>

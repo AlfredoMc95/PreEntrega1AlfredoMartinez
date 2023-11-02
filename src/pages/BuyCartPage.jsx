@@ -4,6 +4,7 @@ import CartItemCard from "../components/cartItemCard/CartItemCard";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ItemsContext } from "../context/ItemsContext";
+import PaperMessage from "../components/paperMessage/PaperMessage";
 
 const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
   const [navLinksArray, buyCartLink, confirmBuy] = useContext(ItemsContext);
@@ -17,11 +18,7 @@ const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
         <Grid container gap={2}>
           {cartItems.length === 0 ? (
             <>
-              <Paper sx={{ width: "100%", p: 10, textAlign: "center" }}>
-                <Typography variant="h3" component="div">
-                  There aren't items to buy.
-                </Typography>
-              </Paper>
+              <PaperMessage message={"There aren't items to buy."} />
             </>
           ) : (
             cartItems.map((itemDet) => (

@@ -5,10 +5,6 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
 import UseReadFB from "../hooks/useReadFB";
 import HomeImage from "../components/homeImage/HomeImage";
-import SignIn from "./SignInPage";
-
-/* import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig"; */
 
 const ItemListContainer = () => {
   const [indexCard, setIndexCard] = useState(0);
@@ -27,21 +23,6 @@ const ItemListContainer = () => {
     }, 500);
     return () => clearInterval(interval);
   }, [useReadFB]);
-
-  //toma la api fakeStore y sube todos los elementos en la base de datos, no see borrar por si es necesario llenar de nuevo la base de datos
-  /*   useEffect(() => {
-    data?.map((currentProduct) => {
-      const docRef = addDoc(collection(db, "products"), {
-        about: currentProduct.description,
-        category: currentProduct.category,
-        img: currentProduct.image,
-        name: currentProduct.title,
-        reviews: currentProduct.rating.rate,
-        stock: 10,
-        price: currentProduct.price,
-      });
-    });
-  }, []); */
 
   return (
     <>
