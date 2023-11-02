@@ -30,8 +30,11 @@ Vite
 Node
 Material-UI
 Firebase.
+Netlify
 ```
 
 Créditos
 
 Este proyecto fue creado con amor y dedicación para el curso de ReactJS en CoderHouse.
+Los elemenmtos de la tienda fueron tomados de la API fakeStore y posteriormente subidos a firebase
+La APP se encuentra alojada en Netlify

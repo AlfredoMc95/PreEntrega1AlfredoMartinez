@@ -2,12 +2,13 @@
 import { Button, Container, Grid, Paper, Typography } from "@mui/material";
 import CartItemCard from "../components/cartItemCard/CartItemCard";
 import { NavLink } from "react-router-dom";
+import PaperMessage from "../components/paperMessage/PaperMessage";
 import { useContext } from "react";
 import { ItemsContext } from "../context/ItemsContext";
-import PaperMessage from "../components/paperMessage/PaperMessage";
 
-const BuyCartPage = ({ cartItems, setCartItems, totalPrice }) => {
-  const [navLinksArray, buyCartLink, confirmBuy] = useContext(ItemsContext);
+const BuyCartPage = () => {
+  const { cartItems, setCartItems, totalPrice } = useContext(ItemsContext);
+  const confirmBuy = { title: "confirmBuy", path: "/confirmBuy" };
   const deleteeItem = (itemToRemove) => {
     const updatedCart = cartItems.filter((item) => item.item !== itemToRemove);
     setCartItems(updatedCart);

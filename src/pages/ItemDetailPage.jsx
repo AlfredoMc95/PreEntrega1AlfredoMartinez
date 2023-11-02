@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/firebaseConfig";
 import {
@@ -9,8 +9,10 @@ import {
   documentId,
 } from "firebase/firestore";
 import DetailCArd from "../components/detailCard/DetailCArd";
+import { ItemsContext } from "../context/ItemsContext";
 
-const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
+const ItemDetailPage = () => {
+  const { addToCart } = useContext(ItemsContext);
   let { id } = useParams();
   const [items, setItems] = useState([]);
   let [product, setProduct] = useState(0);
@@ -35,16 +37,13 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
   const add = () => {
     setProduct(product + 1);
   };
+
   const remove = () => {
     if (product >= 1) {
       setProduct(product - 1);
     } else {
       setProduct((product = 0));
     }
-  };
-
-  const buy = () => {
-    addToCart();
   };
 
   return (
@@ -55,11 +54,8 @@ const ItemDetailPage = ({ addToCart, setSelectedItem, setQuantity }) => {
             key={item?.id}
             add={add}
             remove={remove}
-            buy={buy}
             item={item}
             product={product}
-            setSelectedItem={setSelectedItem}
-            setQuantity={setQuantity}
           />
         );
       })}

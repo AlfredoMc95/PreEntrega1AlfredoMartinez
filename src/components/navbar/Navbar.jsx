@@ -8,18 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import NabListDrawer from "./NabListDrawer";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CartWidgete from "../cartWidgete/CartWidgete";
 import { NavLink } from "react-router-dom";
-import { ItemsContext } from "../../context/ItemsContext";
 import { auth } from "../../firebase/firebaseConfig";
 
-const Navbar = ({ title = "Titulo", countCart }) => {
+const Navbar = ({ title = "Titulo", navLinksArray }) => {
   const [open, setOpen] = useState(false);
-  const [navLinksArray, buyCartLink] = useContext(ItemsContext);
   const LogIn = { title: "signIn", path: "/sigin" };
   const [user, setUser] = useState(null);
+  const buyCartLink = { title: "buyCar", path: "/buyCar" };
 
   const signOut = () => {
     auth.signOut();
@@ -80,7 +79,7 @@ const Navbar = ({ title = "Titulo", countCart }) => {
             ))}
           </Box>
           <IconButton color="inherit" component={NavLink} to={buyCartLink.path}>
-            <CartWidgete countCart={countCart} />
+            <CartWidgete />
           </IconButton>
 
           <Typography

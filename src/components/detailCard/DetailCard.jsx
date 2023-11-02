@@ -8,17 +8,11 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ItemsContext } from "../../context/ItemsContext";
 
-const DetailCArd = ({
-  add,
-  remove,
-  buy,
-  item,
-  product,
-  setSelectedItem,
-  setQuantity,
-}) => {
+const DetailCArd = ({ add, remove, item, product }) => {
+  const { addToCart, setSelectedItem, setQuantity } = useContext(ItemsContext);
   useEffect(() => {
     setSelectedItem(item);
     setQuantity(product);
@@ -87,7 +81,7 @@ const DetailCArd = ({
                     sx={{ mx: 1 }}
                     variant="contained"
                     color="info"
-                    onClick={buy}
+                    onClick={addToCart}
                   >
                     add
                   </Button>

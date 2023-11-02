@@ -1,17 +1,10 @@
-import {
-  Box,
-  Button,
-  Container,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useEffect, useState } from "react";
+import { Container } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { auth, db } from "../firebase/firebaseConfig";
-import MessageSucces from "../components/messgeSucces/MessageSucces";
 import PaperMessage from "../components/paperMessage/PaperMessage";
 import FormConfirmBuy from "../components/formConfirmBuy/FormConfirmBuy";
+import { ItemsContext } from "../context/ItemsContext";
 
 const initialState = {
   name: "",
@@ -21,7 +14,8 @@ const initialState = {
   products: [],
 };
 
-const ConfirmBuyPage = ({ cartItems, setCartItems }) => {
+const ConfirmBuyPage = () => {
+  const { cartItems, setCartItems } = useContext(ItemsContext);
   const [values, setValues] = useState(initialState);
   const [shoppingId, setShoppingId] = useState("");
   const [user, setUser] = useState(null);
