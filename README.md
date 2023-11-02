@@ -16,6 +16,12 @@ npm install
 npm run dev
 ```
 
+o desde este link
+
+```bash
+https://alfredomcstore.netlify.app/
+```
+
 Tecnologías Utilizadas
 
 ```bash
