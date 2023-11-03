@@ -11,7 +11,7 @@ Antes de comenzar, asegúrate de tener Node.js y npm (Node Package Manager) inst
 Clona este repositorio en tu máquina local:
 
 ```bash
-git clone AlfredoMc95/ProyectoFinalAlfredoMartinez
+git clone https://github.com/AlfredoMc95/ProyectoFinalAlfredoMartinez.git
 npm install
 npm run dev
 ```
