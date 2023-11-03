@@ -12,6 +12,7 @@ Clona este repositorio en tu máquina local:
 
 ```bash
 git clone https://github.com/AlfredoMc95/ProyectoFinalAlfredoMartinez.git
+cd .\ProyectoFinalAlfredoMartinez\
 npm install
 npm run dev
 ```
